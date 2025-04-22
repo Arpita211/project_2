@@ -3,6 +3,7 @@ const app = express()
 const mongoose = require("mongoose")
 const List = require("./models/list.js");
 const path = require("path")
+const ejsMate = require("ejs-mate")
 
 
 main()
@@ -17,6 +18,10 @@ async function main() {
 
 app.set("view engine", "ejs")
 app.set("views" , path.join(__dirname ,"views"))
+app.use(express.urlencoded({extended : true}))
+app.engine('ejs', ejsMate);
+app.use(express.static(path.join(__dirname ,"/public")))
+
 
 app.get("/",(req,res)=>{
     res.send(" this is root node")
@@ -25,6 +30,13 @@ app.get("/",(req,res)=>{
 app.get("/listing" , async(req,res)=>{
  const allListing =   await List.find({})
  res.render("listing/index.ejs" , {allListing})
+})
+
+app.get("/listing/:id" , async(req,res)=>{
+    let { id } = req.params;
+    id = id.trim();
+    const listing = await List.findById(id)
+    res.render("listing/show.ejs" , {listing})
 })
 
 /*app.get("/test" ,async (req,res)=>{

@@ -1,24 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+<% layout("/layouts/boilerplate")  %>
 <body>
     <h3>All listing</h3>
-    <ul>
+    <div class=" row row-cols-lg-3 row-cols-md-2 " >
         <% for (const listing of allListing) { %>
-            <li>
-              <a href="/listing/ <%= listing._id %>"><%= listing.title %></a> 
-            </li>
-        <% } %> 
-        
-            
+          <a href="/listing/<%= listing._id %>" class="listing-link">
+        <div class="card col" style="width: 25rem;">
+          <div class="card text-bg-dark">
+            <img src="" class="card-img" alt="...">
+            <div class="card-img-overlay">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <p class="card-text"><small>Last updated 3 mins ago</small></p>
+            </div>
+          </div>
+        <img src="listing.image" class="card-img-top" alt=" listing_image" style = "height: 20rem;"><br>
+        <div class="card-body">
+          <p class="card-text">
+           <b> <%= listing.title %> </b><br><br>
 
-
-        
-    </ul>
+            &#8377; <%= listing.price.toLocaleString("en-IN") %> 
+          </p>
+        </div>
+      </div></a>
+      <% } %></div>
+    
+   
+    
+    
 </body>
-</html>
+
 
