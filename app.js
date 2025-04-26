@@ -4,6 +4,7 @@ const mongoose = require("mongoose")
 const List = require("./models/list.js");
 const path = require("path")
 const ejsMate = require("ejs-mate")
+const methodOverride = require("method-override")
 
 
 main()
@@ -21,6 +22,7 @@ app.set("views" , path.join(__dirname ,"views"))
 app.use(express.urlencoded({extended : true}))
 app.engine('ejs', ejsMate);
 app.use(express.static(path.join(__dirname ,"/public")))
+app.use(methodOverride("_method"))
 
 
 app.get("/",(req,res)=>{
@@ -32,12 +34,27 @@ app.get("/listing" , async(req,res)=>{
  res.render("listing/index.ejs" , {allListing})
 })
 
-app.get("/listing/:id" , async(req,res)=>{
-    let { id } = req.params;
-    id = id.trim();
-    const listing = await List.findById(id)
-    res.render("listing/show.ejs" , {listing})
-})
+// show route
+app.get("/listing/:id", async (req, res) => {
+    const { id } = req.params;
+    const listing = await List.findById(id);
+    res.render("listing/show.ejs", { listing });
+});
+
+// edit form route
+app.get("/listing/:id/edit", async (req, res) => {
+    const { id } = req.params;
+    const listing = await List.findById(id);
+    res.render("listing/edit.ejs", { listing });
+});
+
+// update route
+app.put("/listing/:id", async (req, res) => {
+    const { id } = req.params;
+    await List.findByIdAndUpdate(id, { ...req.body.listing });
+    res.redirect(`/listing/${id}`);
+});
+
 
 /*app.get("/test" ,async (req,res)=>{
     let sampleList = new List({

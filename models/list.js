@@ -6,8 +6,14 @@ const listSchema = new Schema(
     {
         title : String ,
         description : String ,
-        Image : String,
-        price : String,
+        image : String,
+           /* default :"https://unsplash.com/photos/a-white-building-with-a-red-fence-around-it-oJxUdvW2cwQ",
+            set : (v)=>
+                v===""
+            ? "https://unsplash.com/photos/a-white-building-with-a-red-fence-around-it-oJxUdvW2cwQ"
+            : v*/
+        
+        price : Number,
         location : String
 
     })

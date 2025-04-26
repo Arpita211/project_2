@@ -2,7 +2,7 @@
     background-color: brown;
 }*/
 .navbar{
-    height: 5rem;
+    height: 4rem;
     background-color:brown;
 }
 .fa-gopuram{
@@ -41,14 +41,15 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: space-evenly;
-    height: 15rem;
+    height: 8rem;
 }
 .card{
     border: none !important;
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
 }
 .card-img-top{
-    border-radius: 2rem;
+    border-radius: 1rem !important;
+
     width: 100% !important;
     object-fit: cover !important;
 
@@ -71,5 +72,14 @@ opacity: 0;
 }
 .show-img{
     height: 40vh;
+}
+.v-btn{
+border-radius: 4rem;
+background-color: brown;
+padding: 0.2rem;
+}
+.btn{
+    margin-bottom: 2rem;
+    padding : 1rem
 }
 

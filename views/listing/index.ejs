@@ -1,32 +1,32 @@
 <% layout("/layouts/boilerplate")  %>
 <body>
-    <h3>All listing</h3>
-    <div class=" row row-cols-lg-3 row-cols-md-2 " >
-        <% for (const listing of allListing) { %>
-          <a href="/listing/<%= listing._id %>" class="listing-link">
-        <div class="card col" style="width: 25rem;">
-          <div class="card text-bg-dark">
-            <img src="" class="card-img" alt="...">
-            <div class="card-img-overlay">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <p class="card-text"><small>Last updated 3 mins ago</small></p>
-            </div>
-          </div>
-        <img src="listing.image" class="card-img-top" alt=" listing_image" style = "height: 20rem;"><br>
+    <h3>All listings </h3>
+    <div  class="row  row-cols-lg-3 row-cols-md-1">
+
+
+    <% for(let listing of allListing){%>
+      <a href="/listing/<%= listing._id %>" class="listing-link">
+    <div class="card col" >
+        <img src="<%= listing.image %>" class="card-img-top" alt="listing_image" style="height: 20rem;">
+        <div class="card-img-overlay"></div>
         <div class="card-body">
           <p class="card-text">
-           <b> <%= listing.title %> </b><br><br>
+            <b><%= listing.title %> </b><br>
+            &#8377;<%= listing.price.toLocaleString("en-IN") %><br><br>
+            <button class="v-btn">View details</button>
 
-            &#8377; <%= listing.price.toLocaleString("en-IN") %> 
           </p>
-        </div>
-      </div></a>
-      <% } %></div>
-    
-   
-    
-    
-</body>
+          
 
+        </div>
+      
+      </div>
+      </a>
+      <% }%>
+    </div>
+
+
+   
+</body>
+</html>
 
