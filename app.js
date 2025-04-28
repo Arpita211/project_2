@@ -2,6 +2,7 @@ const express = require("express")
 const app = express()
 const mongoose = require("mongoose")
 const List = require("./models/list.js");
+const User = require("./models/user.js") 
 const path = require("path")
 const ejsMate = require("ejs-mate")
 const methodOverride = require("method-override")
@@ -26,7 +27,7 @@ app.use(methodOverride("_method"))
 
 
 app.get("/",(req,res)=>{
-    res.send(" this is root node")
+    res.render("home/root.ejs")
 })
 
 app.get("/listing" , async(req,res)=>{
@@ -54,6 +55,33 @@ app.put("/listing/:id", async (req, res) => {
     await List.findByIdAndUpdate(id, { ...req.body.listing });
     res.redirect(`/listing/${id}`);
 });
+
+app.get("/listing/:id/book", async (req, res) => {
+    const { id } = req.params;
+    const listing = await List.findById(id);
+    res.render("booking/user.ejs", { listing });
+    
+});
+
+
+app.put("/listing/:id/book", async (req, res) => {
+    const { id } = req.params;
+    const { name, email } = req.body.user;
+
+    
+    console.log(`Booking: ${name}, ${email} for listing ${id}`);
+
+
+    res.redirect(`/listing/${id}`);
+});
+
+
+/*app.get("/listing/:id/signup", async (req, res) => {
+    const { id } = req.params;
+    const listing = await List.findById(id);
+    res.render("", { listing });  // Make sure 'user.ejs' expects 'listing'
+});*/
+
 
 
 /*app.get("/test" ,async (req,res)=>{

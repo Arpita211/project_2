@@ -1,6 +1,6 @@
-/*body{
-    background-color: brown;
-}*/
+body{
+   background-image:unset; 
+}
 .navbar{
     height: 4rem;
     background-color:brown;
@@ -74,12 +74,20 @@ opacity: 0;
     height: 40vh;
 }
 .v-btn{
-border-radius: 4rem;
-background-color: brown;
+border-radius: 2rem;
+background-color: rgb(190, 44, 44);
 padding: 0.2rem;
+color:antiquewhite;
+
 }
 .btn{
-    margin-bottom: 2rem;
-    padding : 1rem
+    margin-bottom: 4rem;
+    
+}
+.centre{
+    text-align: center;
+    margin-top: 20rem;
+    margin-bottom: 15rem;
+    color: brown;
 }
 
