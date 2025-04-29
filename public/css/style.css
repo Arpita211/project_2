@@ -1,6 +1,28 @@
 body{
-   background-image:unset; 
+   background-image: url("https://img.freepik.com/free-vector/hand-drawn-namaste-gesture_23-2147694900.jpg?semt=ais_hybrid&w=740" ) !important;
+   background-position: center;
+   background-size: cover;
+   background-repeat: no-repeat;
+   
+   
+   
+
+
 }
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("https://img.freepik.com/free-vector/hand-drawn-namaste-gesture_23-2147694900.jpg?semt=ais_hybrid&w=740");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: blur(3px); 
+    z-index: -1;
+  }
 .navbar{
     height: 4rem;
     background-color:brown;
@@ -46,19 +68,28 @@ body{
 .card{
     border: none !important;
     margin-bottom: 2rem;
+    box-shadow:pink;
+    border-radius:8px !important;
 }
-.card-img-top{
-    border-radius: 1rem !important;
 
+.card-img-top{
+
+    background:linear-gradient(135deg,brown,rgb(185, 23, 23),#e95151 );
     width: 100% !important;
     object-fit: cover !important;
 
 }
 .card-body{
-    padding: 0% !important;
+    padding: 3% !important;
+    background:linear-gradient(135deg,brown,rgb(185, 23, 23),#e95151 );
+    
+     
 }
 .card-text p {
     font: 400 !important;
+}
+.show-card{
+    border-radius: 10px !important;
 }
 .listing-link{
     text-decoration: none;
@@ -72,12 +103,16 @@ opacity: 0;
 }
 .show-img{
     height: 40vh;
+    border: none;
+    width: 100% !important;
+    object-fit: cover !important;
+    
 }
 .v-btn{
 border-radius: 2rem;
 background-color: rgb(190, 44, 44);
-padding: 0.2rem;
-color:antiquewhite;
+padding: 10px;
+color:rgb(231, 200, 161);
 
 }
 .btn{
@@ -88,6 +123,7 @@ color:antiquewhite;
     text-align: center;
     margin-top: 20rem;
     margin-bottom: 15rem;
-    color: brown;
+    color: rgb(36, 31, 31);
+    
 }
 

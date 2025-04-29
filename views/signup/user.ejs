@@ -4,7 +4,7 @@
 
     <h3>Sign Up</h3>
     <br><br>
-    <form action="/signup/<%= listing._id %>?_method=PUT" method="POST">
+    <form action="/signup?_method=PUT" method="POST">
 
         
 
@@ -15,7 +15,7 @@
 
       <div class="mb-3">
         <label for="E-mail" class="form-label">E-mail</label>
-        <E-mail name="signup[email]" class="form-control"><%= signup.email %></E-mail>
+        <input name="signup[email]" class="form-control"><%= signup.email %></input>
       </div>
 
      

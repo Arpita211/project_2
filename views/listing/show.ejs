@@ -3,10 +3,11 @@
    <div class="row mt-3">
       <div class="col-8 offset-2">
    <h3> Listing Details</h3><br>
-</div> 
-   <div class="card col-6 offset-2">
+</div>
+ <div class=" ">
+   <div class="card col-6 offset-2 shadow-lg rounded-xl ">
    
-      <img src="<%=listing.image%>" class="card-img-top show-img" alt="listing_image" style="height: 30rem;">
+      <img src="<%=listing.image%>" class="card-img-top show-img" alt="listing_image" style="height: 30rem; width: 100% !important; border: none;">
   <div class="card-body" >
     <p class="card-text">
       <b><%= listing.title %></b><br>
@@ -18,7 +19,9 @@
    </div>
   
 </div>
+</div>
+
 
 <a  href="/listing/<%= listing._id %>/edit" class="btn btn-dark col-1 offset-2">Edit </a>
-<a  href="/listing/<%= listing._id %>/book" class="btn btn-dark col-1 offset-2">Book Now </a>
+<a  href="/listing/<%= listing._id %>/book" class="btn btn-dark col-1 offset-4">Book Now </a>
 </body>

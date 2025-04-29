@@ -72,8 +72,36 @@ app.put("/listing/:id/book", async (req, res) => {
     console.log(`Booking: ${name}, ${email} for listing ${id}`);
 
 
-    res.redirect(`/listing/${id}`);
+    res.render("listing/booked.ejs");
 });
+
+
+   app.get('/signup', (req, res) => {
+    res.render('signup/user', {
+      signup: {
+        name: '',
+        email: '',
+        phone: '',
+        address: ''
+      }
+    });
+  });
+
+  app.put('/signup', (req, res) => {
+    const signupData = req.body.signup;
+    // Process or save signupData here
+  
+    // For now, just send back the submitted data
+    //res.send(`Received signup: ${JSON.stringify(signupData)}`);
+    res.redirect("/listing")
+  });
+  
+
+  /*app.post('/signup', (req, res) => {
+    console.log(req.body);
+    res.send('Form received');
+  });*/
+  
 
 
 /*app.get("/listing/:id/signup", async (req, res) => {
