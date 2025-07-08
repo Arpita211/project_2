@@ -34,13 +34,47 @@ app.get("/listing" , async(req,res)=>{
  const allListing =   await List.find({})
  res.render("listing/index.ejs" , {allListing})
 })
+/*app.get("/listing/:id", async (req, res) => {
+    try {
+        const { id } = req.params;
+        const listing = await List.findById(id);
+        
+        if (!listing) {
+            return res.status(404).send("Listing not found");
+        }
+console.log('Listing:', listing);
+res.render("listing/show", { listing });
+
+
+        //res.render("listing/show.ejs", { listing });
+    } catch (err) {
+        console.error("Error fetching listing:", err);
+        res.status(500).send("Internal Server Error");
+    }
+    console.log('Listing:', listing);
+
+});*/
+//new rote
+app.get("/listing/new",async(req,res)=>{
+   res.render("listing/new.ejs") 
+})
 
 // show route
 app.get("/listing/:id", async (req, res) => {
     const { id } = req.params;
     const listing = await List.findById(id);
     res.render("listing/show.ejs", { listing });
+    
+
 });
+
+//create route
+app.post("/listing" ,async(req,res)=>{
+    const newListing =new List( req.body.listing)
+    await newListing.save()
+    res.redirect("/listing")
+
+})
 
 // edit form route
 app.get("/listing/:id/edit", async (req, res) => {
@@ -64,7 +98,7 @@ app.get("/listing/:id/book", async (req, res) => {
 });
 
 
-app.put("/listing/:id/book", async (req, res) => {
+/*app.put("/listing/:id/book", async (req, res) => {
     const { id } = req.params;
     const { name, email } = req.body.user;
 
@@ -73,7 +107,7 @@ app.put("/listing/:id/book", async (req, res) => {
 
 
     res.render("listing/booked.ejs");
-});
+});*/
 
 
    app.get('/signup', (req, res) => {
